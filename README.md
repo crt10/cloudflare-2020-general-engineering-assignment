@@ -1,15 +1,3 @@
-# 👷 `worker-template` Hello World
+# Cloudflare Workers - 2020 General Engineering Assignment
 
-A template for kick starting a Cloudflare worker project.
-
-[`index.js`](https://github.com/cloudflare/worker-template/blob/master/index.js) is the content of the Workers script.
-
-#### Wrangler
-
-To generate using [wrangler](https://github.com/cloudflare/wrangler)
-
-```
-wrangler generate projectname https://github.com/cloudflare/worker-template
-```
-
-Further documentation for Wrangler can be found [here](https://developers.cloudflare.com/workers/tooling/wrangler).
+Internship assignment to build a linktree-style website in Cloudflare Workers, using Wrangler.
