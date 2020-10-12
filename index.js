@@ -7,20 +7,20 @@ async function handleRequest(request) {
   const url = host + "/links"
   const linkTreeURL = "https://static-links-page.signalnerve.workers.dev"
   const links = [
-    JSON.stringify({name: "Github", url: "https://github.com/crt10"}),
-    JSON.stringify({name: "LinkedIn", url: "https://www.linkedin.com/in/tennyson-cheng-bb053b1b8/"}),
-    JSON.stringify({name: "Personal Site", url: "https://meme-werld.fun"})
+    {name: "Github", url: "https://github.com/crt10"},
+    {name: "LinkedIn", url: "https://www.linkedin.com/in/tennyson-cheng-bb053b1b8/"},
+    {name: "Personal Site", url: "https://meme-werld.fun"},
   ]
   const socialLinks = [
-    JSON.stringify({name: "Facebook", url: "https://www.facebook.com/tennyson.cheng", svg: "https://simpleicons.org/icons/facebook.svg"}),
-    JSON.stringify({name: "Twitch", url: "https://www.twitch.tv/creatorten", svg: "https://simpleicons.org/icons/twitch.svg"}),
+    {name: "Facebook", url: "https://www.facebook.com/tennyson.cheng", svg: "https://simpleicons.org/icons/facebook.svg"},
+    {name: "Twitch", url: "https://www.twitch.tv/creatorten", svg: "https://simpleicons.org/icons/twitch.svg"},
   ]
   const pfp = "https://meme-werld.fun/profile.jpg"
   const name = "Tennyson Cheng"
   const color = "bg-blue-700"
 
   if (request.url === url) {
-    return new Response(links, {
+    return new Response(JSON.stringify(links, 2, null), {
       headers: { "content-type": "application/json" },
     })
   }
@@ -51,12 +51,12 @@ class LinksTransformer {
   }
   async element(e) {
     for (let link of this.links) {
-      let a = "<a href=\"" + JSON.parse(link).url + "\">"
-      if (JSON.parse(link).svg) {
-        a += await (await fetchStaticHTML(JSON.parse(link).svg)).text()
+      let a = "<a href=\"" + link.url + "\">"
+      if (link.svg) {
+        a += await (await fetchStaticHTML(link.svg)).text()
       }
       else {
-        a += JSON.parse(link).name
+        a += link.name
       }
       a += "</a>"
       e.append(a, {html:true})
