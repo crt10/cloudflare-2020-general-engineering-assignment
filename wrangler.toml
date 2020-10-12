@@ -1,4 +1,4 @@
-name = "cloudflare-2020-general-engineering-assignment"
+name = "link-tree"
 type = "javascript"
 account_id = "a5f60bc29afd5bc4d626c897bec4bf90"
 workers_dev = true

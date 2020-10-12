@@ -3,8 +3,6 @@ addEventListener('fetch', event => {
 })
 
 async function handleRequest(request) {
-  const host = "https://cloudflare-2020-general-engineering-assignment.tennyson-cheng.workers.dev"
-  const url = host + "/links"
   const linkTreeURL = "https://static-links-page.signalnerve.workers.dev"
   const links = [
     {name: "Github", url: "https://github.com/crt10"},
@@ -19,10 +17,10 @@ async function handleRequest(request) {
   const name = "Tennyson Cheng"
   const color = "bg-blue-700"
 
-  if (request.url === url) {
+  if (request.url.endsWith("/links")) {
     return new Response(JSON.stringify(links), {
       headers: { 'content-type': 'application/json;charset=UTF-8' },
-    })
+     })
   }
   return new HTMLRewriter()
   .on("div#links", new LinksTransformer(links))
