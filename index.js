@@ -20,8 +20,8 @@ async function handleRequest(request) {
   const color = "bg-blue-700"
 
   if (request.url === url) {
-    return new Response(JSON.stringify(links, 2, null), {
-      headers: { "content-type": "application/json" },
+    return new Response(JSON.stringify(links), {
+      headers: { 'content-type': 'application/json;charset=UTF-8' },
     })
   }
   return new HTMLRewriter()
@@ -38,10 +38,10 @@ async function handleRequest(request) {
 
 async function fetchStaticHTML(url) {
   const response = await fetch(url, {
-    headers: {"content-type": "text/html"},
+    headers: {'content-type': 'text/html;charset=UTF-8'},
   })
   return new Response(await response.text(), {
-    headers: {"content-type": "text/html"},
+    headers: {'content-type': 'text/html;charset=UTF-8'},
   })
 }
 
